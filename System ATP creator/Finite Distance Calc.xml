@@ -1,0 +1,656 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>Daniel Kopilov</Author>
+  <LastAuthor>Daniel Kopilov</LastAuthor>
+  <Created>2026-02-17T12:38:23Z</Created>
+  <Version>16.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>11865</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
+  <WindowTopX>32767</WindowTopX>
+  <WindowTopY>32767</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Aptos Narrow" x:CharSet="177" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="m1799059692656">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="m1799059692676">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="m1799059692696">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="m1799059692240">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="16"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="m1799059692260">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s62">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s63">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s64">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s65">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s69">
+   <Alignment ss:Vertical="Center" ss:WrapText="1"/>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="14"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s72">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s73">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s74">
+   <Alignment ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="14"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s75">
+   <Alignment ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="14"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s76">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s77">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s78">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s79">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s80">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0.000"/>
+  </Style>
+  <Style ss:ID="s81">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s82">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s83">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s84">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0.0"/>
+  </Style>
+  <Style ss:ID="s85">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="Fixed"/>
+  </Style>
+  <Style ss:ID="s86">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="Fixed"/>
+  </Style>
+  <Style ss:ID="s89">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#83CCEB" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s90">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#92D050" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0.0000"/>
+  </Style>
+  <Style ss:ID="s91">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s92">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0.000"/>
+  </Style>
+  <Style ss:ID="s93">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s94">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s95">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s96">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center" ss:WrapText="1"/>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s98">
+   <Alignment ss:Vertical="Top"/>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="14"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s99">
+   <Alignment ss:Vertical="Center" ss:WrapText="1"/>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s101">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Aptos Narrow" x:Family="Swiss" ss:Size="13"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s102">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0"/>
+  </Style>
+  <Style ss:ID="s103">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0.0000"/>
+  </Style>
+  <Style ss:ID="s104">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0.000"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Sheet1">
+  <Table ss:ExpandedColumnCount="22" ss:ExpandedRowCount="33" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="47.25"
+   ss:DefaultRowHeight="14.25">
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="23.25"/>
+   <Column ss:StyleID="s62" ss:Hidden="1" ss:AutoFitWidth="0" ss:Width="105.75"/>
+   <Column ss:StyleID="s62" ss:Hidden="1" ss:AutoFitWidth="0" ss:Width="77.25"/>
+   <Column ss:StyleID="s62" ss:Hidden="1" ss:AutoFitWidth="0" ss:Width="87"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="90"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="81.75"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="81"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="24.75"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="63.75"/>
+   <Column ss:Index="14" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="64.5"/>
+   <Row ss:Index="4" ss:Height="15"/>
+   <Row ss:Height="21">
+    <Cell ss:Index="3"><Data ss:Type="String">Real EFL &quot;</Data></Cell>
+    <Cell><Data ss:Type="String">EFL display</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:Index="9" ss:MergeAcross="12" ss:StyleID="m1799059692240"><Data
+      ss:Type="String">החישוב הממומש בקובץ הוא ה Thin lens equation, עם המרה לתזוזה היחסית ממישור המוקד:</Data></Cell>
+    <Cell ss:StyleID="s69"/>
+   </Row>
+   <Row ss:Height="18.75">
+    <Cell ss:Index="2" ss:StyleID="s70"><Data ss:Type="String">selected EFL index</Data></Cell>
+    <Cell ss:StyleID="s70" ss:Formula="=100/25.4"><Data ss:Type="Number">3.9370078740157481</Data></Cell>
+    <Cell><Data ss:Type="String">WFOV 100 mm</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="m1799059692260"><Data ss:Type="String">Select EFL</Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="s74"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s75"/>
+    <Cell ss:StyleID="s69"/>
+   </Row>
+   <Row ss:Height="18.75">
+    <Cell ss:Index="2"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:Formula="=15*(387.5/381)"><Data ss:Type="Number">15.255905511811022</Data></Cell>
+    <Cell><Data ss:Type="String">ILET5 &quot;short&quot;, 15&quot;</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:Index="7" ss:StyleID="s77"/>
+    <Cell ss:Index="9" ss:StyleID="s74"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s75"/>
+    <Cell ss:StyleID="s69"/>
+   </Row>
+   <Row>
+    <Cell ss:Index="3"><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="String">ILET 4 &amp; 5, 30&quot;</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:Index="7" ss:StyleID="s77"/>
+    <Cell ss:Index="9" ss:StyleID="s76"/>
+    <Cell ss:Index="21" ss:StyleID="s77"/>
+   </Row>
+   <Row>
+    <Cell ss:Index="2" ss:StyleID="s70"><Data ss:Type="String">selected EFL &quot;</Data></Cell>
+    <Cell ss:StyleID="s70" ss:Formula="=40*(1023.3/1016)"><Data ss:Type="Number">40.287401574803148</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">METS-VS-40&quot;</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s78"
+     ss:Formula="=IF(R[-2]C[-3]=10,&quot; custom focal length =&quot;,&quot;&quot;)"><Data
+      ss:Type="String"></Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s72"><Data ss:Type="Number">300</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s73"
+     ss:Formula="=IF(R[-2]C[-5]=10,&quot;[mm]&quot;,&quot;&quot;)"><Data
+      ss:Type="String"></Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="s76"/>
+    <Cell ss:Index="21" ss:StyleID="s77"/>
+   </Row>
+   <Row>
+    <Cell ss:Index="2" ss:StyleID="s70"
+     ss:Formula="=IF(R[-3]C=1,R[-4]C[1],IF(R[-3]C=2,R[-3]C[1],IF(R[-3]C=3,R[-2]C[1],IF(R[-3]C=4,R[-1]C[1],IF(R[-3]C=5,RC[1],IF(R[-3]C=6,R[1]C[1],IF(R[-3]C=7,R[2]C[1],IF(R[-3]C=8,R[3]C[1],IF(R[-3]C=9,R[4]C[1],R[-1]C[4]/25.4)))))))))"><Data
+      ss:Type="Number">120</Data></Cell>
+    <Cell><Data ss:Type="Number">40</Data></Cell>
+    <Cell><Data ss:Type="String">ILET6-40&quot;</Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="s76"/>
+    <Cell ss:Index="21" ss:StyleID="s77"/>
+   </Row>
+   <Row ss:Height="15" ss:StyleID="s70">
+    <Cell ss:Index="3" ss:StyleID="s62" ss:Formula="=70*(1787.1/1778)"><Data
+      ss:Type="Number">70.358267716535423</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">METS-S/L 70&quot;</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s79"
+     ss:Formula="=IF(R[7]C[-3]=1,&quot;Apparent focal length used in calculation and it is equal to = &quot;,&quot;&quot;)"><Data
+      ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s80"
+     ss:Formula="=IF(R[-4]C[-4]=2,R[-4]C[-3],IF(R[-4]C[-4]=4,R[-2]C[-3],IF(R[-4]C[-4]=6,RC[-3],&quot;&quot;)))"><Data
+      ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81" ss:Formula="=IF(R[7]C[-5]=1,&quot;Inch&quot;,&quot;&quot;)"><Data
+      ss:Type="String"></Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="s82"/>
+    <Cell ss:Index="21" ss:StyleID="s83"/>
+   </Row>
+   <Row ss:Height="15" ss:StyleID="s70">
+    <Cell ss:Index="2"><Data ss:Type="String">selected EFL mm</Data></Cell>
+    <Cell><Data ss:Type="Number">120</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">METS-VL 120&quot;</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s84"
+     ss:Formula="=IF(R[-5]C[-4]=2,R[-5]C[-3]*25.4,IF(R[-5]C[-4]=4,R[-3]C[-3]*25.4,IF(R[-5]C[-4]=6,R[-1]C[-3]*25.4,&quot;&quot;)))"><Data
+      ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s85" ss:Formula="=IF(R[6]C[-5]=1,&quot;mm&quot;,&quot;&quot;)"><Data
+      ss:Type="String"></Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="s82"/>
+    <Cell ss:Index="21" ss:StyleID="s83"/>
+   </Row>
+   <Row ss:StyleID="s70">
+    <Cell ss:Index="2" ss:Formula="=R[-3]C*25.4"><Data ss:Type="Number">3048</Data></Cell>
+    <Cell><Data ss:Type="Number">180</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">METS-VVL 180&quot;</Data></Cell>
+    <Cell ss:StyleID="s82"/>
+    <Cell ss:Index="7" ss:StyleID="s86"/>
+    <Cell ss:Index="9" ss:StyleID="s82"/>
+    <Cell ss:Index="21" ss:StyleID="s83"/>
+   </Row>
+   <Row ss:Height="28.5" ss:StyleID="s70">
+    <Cell ss:Index="2"><Data ss:Type="String">entered distance mm</Data></Cell>
+    <Cell><Data ss:Type="Number">220</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">METS-VVL 220&quot;</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="m1799059692656"><Data ss:Type="String">Desired Finite distance</Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="s82"/>
+    <Cell ss:Index="21" ss:StyleID="s83"/>
+   </Row>
+   <Row ss:Height="15">
+    <Cell ss:Index="2" ss:Formula="=R[8]C[2]*1000"><Data ss:Type="Number">250000</Data></Cell>
+    <Cell ss:StyleID="s70" ss:Formula="=RC[1]"><Data ss:Type="String">custom length</Data></Cell>
+    <Cell><Data ss:Type="String">custom length</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s89"><Data ss:Type="Number">250</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:Index="9" ss:StyleID="s76"/>
+    <Cell ss:Index="21" ss:StyleID="s77"/>
+   </Row>
+   <Row ss:Height="15">
+    <Cell ss:Index="5" ss:MergeAcross="2" ss:StyleID="m1799059692676"
+     ss:Formula="=IF(R[10]C[-2]=1,&quot;Bar width less than 20 um&quot;,&quot;&quot;)"><Data
+      ss:Type="String"></Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="s76"/>
+    <Cell ss:Index="21" ss:StyleID="s77"/>
+   </Row>
+   <Row>
+    <Cell ss:Index="2"><Data ss:Type="String">flag 'apparent is used'</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="s76"/>
+    <Cell ss:Index="7" ss:StyleID="s77"/>
+    <Cell ss:Index="9" ss:StyleID="s76"/>
+    <Cell ss:Index="21" ss:StyleID="s77"/>
+   </Row>
+   <Row ss:Height="15" ss:StyleID="s70">
+    <Cell ss:Index="2" ss:Formula="=IF(OR(R[-11]C=2,R[-11]C=4,R[-11]C=6),1,0)"><Data
+      ss:Type="Number">0</Data></Cell>
+    <Cell ss:Index="5" ss:MergeAcross="2" ss:StyleID="m1799059692696"><Data
+      ss:Type="String">Distance from focal plane</Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="s82"/>
+    <Cell ss:Index="21" ss:StyleID="s83"/>
+   </Row>
+   <Row ss:Height="15">
+    <Cell ss:Index="2" ss:StyleID="s70"/>
+    <Cell ss:Index="5" ss:StyleID="s76"/>
+    <Cell ss:StyleID="s90" ss:Formula="=(R[-6]C[-4]^2)/(R[-4]C[-4]-R[-6]C[-4])"><Data
+      ss:Type="Number">37.619877547053676</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">[mm]</Data></Cell>
+    <Cell ss:Index="9" ss:StyleID="s76"/>
+    <Cell ss:Index="21" ss:StyleID="s77"/>
+   </Row>
+   <Row ss:Height="15">
+    <Cell ss:Index="2" ss:StyleID="s70"><Data ss:Type="String">selected units 1</Data></Cell>
+    <Cell ss:StyleID="s70"/>
+    <Cell ss:StyleID="s70"/>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s92"/>
+    <Cell ss:StyleID="s91"/>
+    <Cell ss:Index="9" ss:StyleID="s76"/>
+    <Cell ss:Index="21" ss:StyleID="s77"/>
+   </Row>
+   <Row ss:Height="15">
+    <Cell ss:Index="2"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">Meter</Data></Cell>
+    <Cell ss:StyleID="s93"/>
+    <Cell ss:StyleID="s94"/>
+    <Cell ss:StyleID="s95"/>
+    <Cell ss:Index="9" ss:StyleID="s93"/>
+    <Cell ss:StyleID="s94"/>
+    <Cell ss:StyleID="s94"/>
+    <Cell ss:StyleID="s94"/>
+    <Cell ss:StyleID="s94"/>
+    <Cell ss:StyleID="s94"/>
+    <Cell ss:StyleID="s94"/>
+    <Cell ss:StyleID="s94"/>
+    <Cell ss:StyleID="s94"/>
+    <Cell ss:StyleID="s94"/>
+    <Cell ss:StyleID="s94"/>
+    <Cell ss:StyleID="s94"/>
+    <Cell ss:StyleID="s95"/>
+   </Row>
+   <Row>
+    <Cell ss:Index="4"><Data ss:Type="String">KM</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:Index="2" ss:StyleID="s70"/>
+    <Cell ss:StyleID="s70"/>
+    <Cell ss:Formula="=IF(R[-2]C[-2]=1,R[-8]C[2],R[-8]C[2]*1000)"><Data
+      ss:Type="Number">250</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:MergeDown="2" ss:StyleID="s96"><Data
+      ss:Type="String">יש לבחור אורך מוקד ולהזין מרחק הקרנה סופי נדרש בתא הכחול, עם בחירת יחידות מתאימה.&#10;התוצאה תופיע בתא הירוק, במ&quot;מ</Data></Cell>
+   </Row>
+   <Row ss:Height="18.75">
+    <Cell ss:Index="8" ss:StyleID="s98"/>
+    <Cell ss:Index="16" ss:StyleID="s99"/>
+    <Cell ss:StyleID="s99"/>
+    <Cell ss:StyleID="s99"/>
+   </Row>
+   <Row ss:Height="18.75">
+    <Cell ss:Index="8" ss:StyleID="s98"/>
+    <Cell ss:StyleID="s70"/>
+    <Cell ss:Index="16" ss:StyleID="s99"/>
+    <Cell ss:StyleID="s99"/>
+    <Cell ss:StyleID="s99"/>
+   </Row>
+   <Row ss:Height="18.75">
+    <Cell ss:Index="8" ss:StyleID="s98"/>
+    <Cell ss:Index="16" ss:StyleID="s99"/>
+    <Cell ss:StyleID="s99"/>
+    <Cell ss:StyleID="s99"/>
+   </Row>
+   <Row ss:Height="18.75">
+    <Cell ss:Index="5" ss:MergeAcross="2" ss:MergeDown="1" ss:StyleID="s101"><Data
+      ss:Type="String">ההזזה היא תמיד לכיוון המראה (אורך מוקד &quot;מקוצר&quot;)</Data></Cell>
+    <Cell ss:StyleID="s98"/>
+    <Cell ss:Index="16" ss:StyleID="s99"/>
+    <Cell ss:StyleID="s99"/>
+    <Cell ss:StyleID="s99"/>
+   </Row>
+   <Row ss:Height="18.75">
+    <Cell ss:Index="8" ss:StyleID="s98"/>
+   </Row>
+   <Row>
+    <Cell ss:Index="6" ss:StyleID="s102"/>
+   </Row>
+   <Row>
+    <Cell ss:Index="6" ss:StyleID="s103"/>
+   </Row>
+   <Row>
+    <Cell ss:Index="6" ss:StyleID="s102"/>
+   </Row>
+   <Row>
+    <Cell ss:Index="6" ss:StyleID="s102"/>
+   </Row>
+   <Row>
+    <Cell ss:Index="6" ss:StyleID="s104"/>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>23</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R16C5</Range>
+   <Condition>
+    <Qualifier>Equal</Qualifier>
+    <Value1>&quot;Bar width less than 20 um&quot;</Value1>
+    <Format Style='background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R11C5:R12C7</Range>
+   <Condition>
+    <Value1>R18C2=1</Value1>
+    <Format Style='background:yellow'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R9C6:R10C6</Range>
+   <Condition>
+    <Value1>R7C2&lt;&gt;10</Value1>
+    <Format Style='color:white'/>
+   </Condition>
+  </ConditionalFormatting>
+ </Worksheet>
+</Workbook>
