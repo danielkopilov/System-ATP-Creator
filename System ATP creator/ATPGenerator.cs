@@ -1535,12 +1535,13 @@ namespace System_ATP_creator
                             text.Text = !string.IsNullOrEmpty(config.Contract) ? config.Contract : "____";
                         }
                         // Replace "VS/S/L/VL-XX" with actual variant and FOV (for title page)
-                        // For ILET, exclude the FOV/Aperture part
+                        // For ILET and WFOV, exclude the FOV/Aperture part
                         else if (text.Text.Contains("VS/S/L/VL-XX"))
                         {
-                            if (config.SystemType.Equals("ILET", StringComparison.OrdinalIgnoreCase))
+                            if (config.SystemType.Equals("ILET", StringComparison.OrdinalIgnoreCase) ||
+                                config.SystemType.Equals("WFOV", StringComparison.OrdinalIgnoreCase))
                             {
-                                // ILET: Show only variant (e.g., "ILET-6" instead of "ILET-6-6\"")
+                                // ILET or WFOV: Show only variant (e.g., "ILET-6" or "WFOV – 8-12 [um]")
                                 text.Text = text.Text.Replace("VS/S/L/VL-XX", config.METSVariant);
                             }
                             else
@@ -1777,11 +1778,20 @@ namespace System_ATP_creator
                                  originalText.Equals("6mm", StringComparison.OrdinalIgnoreCase) ||
                                  originalText.Equals("Variantmm", StringComparison.OrdinalIgnoreCase))
                         {
-                            string variantDistance = config.GetVariantDistance();
-                            if (!string.IsNullOrEmpty(variantDistance))
+                            // Special handling for WFOV: always use 100mm for focal length in Targets section
+                            if (config.SystemType.Equals("WFOV", StringComparison.OrdinalIgnoreCase))
                             {
-                                text.Text = variantDistance + "mm";
-                                System.Diagnostics.Debug.WriteLine($"  -> Replaced with: {text.Text} (PRIORITY 1)");
+                                text.Text = "100mm";
+                                System.Diagnostics.Debug.WriteLine($"  -> Replaced with: {text.Text} (WFOV fixed value)");
+                            }
+                            else
+                            {
+                                string variantDistance = config.GetVariantDistance();
+                                if (!string.IsNullOrEmpty(variantDistance))
+                                {
+                                    text.Text = variantDistance + "mm";
+                                    System.Diagnostics.Debug.WriteLine($"  -> Replaced with: {text.Text} (PRIORITY 1)");
+                                }
                             }
                         }
                         // Also handle cases where "Smm" appears in focal length context (case-sensitive)
@@ -1798,11 +1808,20 @@ namespace System_ATP_creator
                                 prefix.Equals("VL", StringComparison.OrdinalIgnoreCase) ||
                                 prefix == "4" || prefix == "5" || prefix == "6")
                             {
-                                string variantDistance = config.GetVariantDistance();
-                                if (!string.IsNullOrEmpty(variantDistance))
+                                // Special handling for WFOV: always use 100mm for focal length in Targets section
+                                if (config.SystemType.Equals("WFOV", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    text.Text = variantDistance + "mm";
-                                    System.Diagnostics.Debug.WriteLine($"  -> Replaced with: {text.Text} (Context mm)");
+                                    text.Text = "100mm";
+                                    System.Diagnostics.Debug.WriteLine($"  -> Replaced with: {text.Text} (WFOV fixed value - Context mm)");
+                                }
+                                else
+                                {
+                                    string variantDistance = config.GetVariantDistance();
+                                    if (!string.IsNullOrEmpty(variantDistance))
+                                    {
+                                        text.Text = variantDistance + "mm";
+                                        System.Diagnostics.Debug.WriteLine($"  -> Replaced with: {text.Text} (Context mm)");
+                                    }
                                 }
                             }
                         }
@@ -1816,11 +1835,20 @@ namespace System_ATP_creator
                                   originalText == "4" || originalText == "5" || originalText == "6" || 
                                   originalText.Equals("Variant", StringComparison.OrdinalIgnoreCase)))
                         {
-                            string variantDistance = config.GetVariantDistance();
-                            if (!string.IsNullOrEmpty(variantDistance))
+                            // Special handling for WFOV: always use 100 for focal length in Targets section
+                            if (config.SystemType.Equals("WFOV", StringComparison.OrdinalIgnoreCase))
                             {
-                                text.Text = variantDistance;
-                                System.Diagnostics.Debug.WriteLine($"  -> Replaced with: {text.Text} (PRIORITY 2 - focal length)");
+                                text.Text = "100";
+                                System.Diagnostics.Debug.WriteLine($"  -> Replaced with: {text.Text} (WFOV fixed value - PRIORITY 2)");
+                            }
+                            else
+                            {
+                                string variantDistance = config.GetVariantDistance();
+                                if (!string.IsNullOrEmpty(variantDistance))
+                                {
+                                    text.Text = variantDistance;
+                                    System.Diagnostics.Debug.WriteLine($"  -> Replaced with: {text.Text} (PRIORITY 2 - focal length)");
+                                }
                             }
                         }
                         // PRIORITY 3: Check if this is Exit Aperture Diameter context - replace with distance value
@@ -1923,7 +1951,7 @@ namespace System_ATP_creator
                         // FOV replacement on first page
                         else if (originalText == "FOV")
                         {
-                            // Skip FOV display for ILET on title page (where System: ILET-Variant should not include FOV)
+                            // Skip FOV display for ILET and WFOV on title page (where System: ILET-Variant or WFOV-Variant should not include FOV)
                             bool isTitlePageContext = parentParaText.Contains("Acceptance Test Procedure") || 
                                                      parentParaText.Contains("ATP") ||
                                                      tableRowContext.Contains("System:");
@@ -1931,11 +1959,15 @@ namespace System_ATP_creator
                                                parentParaText.Contains("ATR") ||
                                                tableRowContext.Contains("Acceptance Test Results");
 
-                            if (config.SystemType.Equals("ILET", StringComparison.OrdinalIgnoreCase) && 
+                            if ((config.SystemType.Equals("ILET", StringComparison.OrdinalIgnoreCase) ||
+                                 config.SystemType.Equals("WFOV", StringComparison.OrdinalIgnoreCase)) && 
                                 (isTitlePageContext || isATRContext))
                             {
-                                // For ILET on title/ATR pages, don't show FOV in system name
+                                // For ILET and WFOV on title/ATR pages, don't show FOV in system name
                                 text.Text = "";
+
+                                // Also remove the hyphen before FOV
+                                RemoveNextHyphen(run);
                             }
                             else
                             {
@@ -1952,7 +1984,7 @@ namespace System_ATP_creator
                         }
                         // FOV replacement - match any aperture format like "6\"", "10\"", "16\"", etc.
                         else if (originalText.Contains("\"") && 
-                                 (originalText.Contains("10") || originalText.Contains("12") || 
+                                 (originalText.Contains("10") || originalText.Contains("11") || originalText.Contains("12") || 
                                   originalText.Contains("14") || originalText.Contains("16") || originalText.Contains("19") || 
                                   originalText.Contains("21") || originalText.Contains("15") || originalText.Contains("30") || 
                                   originalText.Contains("40") || originalText == "2\"" || originalText == "3\"" || 
@@ -1969,15 +2001,48 @@ namespace System_ATP_creator
                                                tableRowContext.Contains("Acceptance Test Results") ||
                                                tableRowContext.Contains("System:") && tableCellContext.Contains("System:");
 
-                            if (config.SystemType.Equals("ILET", StringComparison.OrdinalIgnoreCase) && 
+                            if ((config.SystemType.Equals("ILET", StringComparison.OrdinalIgnoreCase) ||
+                                 config.SystemType.Equals("WFOV", StringComparison.OrdinalIgnoreCase)) && 
                                 (isTitlePageContext || isATRContext))
                             {
-                                // For ILET on title/ATR pages, don't show FOV in system name - remove it
+                                // For ILET and WFOV on title/ATR pages, don't show FOV in system name - remove it
                                 text.Text = "";
+
+                                // Also remove the hyphen before FOV
+                                RemoveNextHyphen(run);
                             }
                             else if (!string.IsNullOrEmpty(config.FOV))
                             {
                                 text.Text = config.FOV + "\"";
+                            }
+                        }
+                        // FOV replacement - match [deg] format like "11 [deg]", "15 [deg]", "11.7 [deg]", etc. (used by WFOV)
+                        else if (originalText.Contains("[deg]") && 
+                                 (originalText.Contains("11") || originalText.Contains("15") || originalText.Contains("30") ||
+                                  originalText.Contains("11.7") || originalText.Contains("11.0")))
+                        {
+                            // Skip FOV display for WFOV on title page and ATR page
+                            bool isTitlePageContext = parentParaText.Contains("Acceptance Test Procedure") || 
+                                                     parentParaText.Contains("ATP") ||
+                                                     parentParaText.Contains("For") ||
+                                                     (tableRowContext.Contains("System:") && !tableRowContext.Contains("Targets"));
+                            bool isATRContext = parentParaText.Contains("Acceptance Test Results") ||
+                                               parentParaText.Contains("ATR") ||
+                                               tableRowContext.Contains("Acceptance Test Results") ||
+                                               tableRowContext.Contains("System:") && tableCellContext.Contains("System:");
+
+                            if (config.SystemType.Equals("WFOV", StringComparison.OrdinalIgnoreCase) && 
+                                (isTitlePageContext || isATRContext))
+                            {
+                                // For WFOV on title/ATR pages, don't show FOV in system name - remove it
+                                text.Text = "";
+
+                                // Also remove the hyphen before FOV
+                                RemoveNextHyphen(run);
+                            }
+                            else if (!string.IsNullOrEmpty(config.FOV))
+                            {
+                                text.Text = config.FOV;
                             }
                         }
                         // Blackbody Size replacement (XX in SR800N-XX)
@@ -2003,12 +2068,33 @@ namespace System_ATP_creator
                         {
                             if (!string.IsNullOrEmpty(config.FOV))
                             {
-                                // Convert FOV from inches to mm (1 inch = 25.4 mm)
-                                string fovValue = config.FOV.Replace("\"", "").Trim();
-                                if (double.TryParse(fovValue, out double inches))
+                                // Special handling for WFOV system: FOV values have fixed aperture diameters
+                                if (config.SystemType.Equals("WFOV", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    double mm = inches * 25.4;
-                                    text.Text = mm.ToString("0.0"); // Format with 1 decimal place
+                                    string fovValue = config.FOV.Replace("[deg]", "").Replace("\"", "").Trim();
+                                    if (double.TryParse(fovValue, out double fovDegrees))
+                                    {
+                                        // If FOV is 11.7 or 15, aperture is 70mm
+                                        if (Math.Abs(fovDegrees - 11.7) < 0.01 || Math.Abs(fovDegrees - 15.0) < 0.01)
+                                        {
+                                            text.Text = "70";
+                                        }
+                                        // If FOV is 11, aperture is 100mm
+                                        else if (Math.Abs(fovDegrees - 11.0) < 0.01)
+                                        {
+                                            text.Text = "100";
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // For non-WFOV systems, convert FOV from inches to mm (1 inch = 25.4 mm)
+                                    string fovValue = config.FOV.Replace("\"", "").Trim();
+                                    if (double.TryParse(fovValue, out double inches))
+                                    {
+                                        double mm = inches * 25.4;
+                                        text.Text = mm.ToString("0.0"); // Format with 1 decimal place
+                                    }
                                 }
                             }
 
@@ -2034,8 +2120,9 @@ namespace System_ATP_creator
                 }
             }
 
-            // Clean up trailing hyphens for ILET system names (e.g., "ILET-6-" -> "ILET-6")
-            if (config.SystemType.Equals("ILET", StringComparison.OrdinalIgnoreCase))
+            // Clean up trailing hyphens for ILET and WFOV system names (e.g., "ILET-6-" -> "ILET-6", "WFOV-3-5 [um]-" -> "WFOV-3-5 [um]")
+            if (config.SystemType.Equals("ILET", StringComparison.OrdinalIgnoreCase) ||
+                config.SystemType.Equals("WFOV", StringComparison.OrdinalIgnoreCase))
             {
                 CleanUpILETSystemNames(element, config);
             }

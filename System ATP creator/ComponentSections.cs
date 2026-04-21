@@ -332,6 +332,7 @@ Record the result in the ATR."
                 TestProcedureSection = @"CTE
 Test Procedure:
 Open Device Center on the PC and verify that SW works ok.
+Make sure all components are connected (GREEN status color)
 Verify that sources are being controlled from SW.
 Record results in the ATR."
             };
@@ -412,6 +413,7 @@ Record the test results in the ATR document."
 Test Procedure:
 Open Device Center on the PC and verify the SW is configured to the HW.
 Verify all the features are controlled from SW.
+Make sure all components are connected (GREEN status color)
 Record results in the ATR."
             };
         }

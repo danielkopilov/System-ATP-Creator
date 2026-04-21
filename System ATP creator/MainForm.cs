@@ -16,6 +16,8 @@ namespace System_ATP_creator
         private ComboBox cmbSystemType;
         private ComboBox cmbVariant;
         private ComboBox cmbFOV;
+        private Label lblVariant;
+        private Label lblFOV;
         private RoundedGroupBox gbSystemType;
         private RoundedGroupBox gbComponents;
         private RoundedGroupBox gbRadiationSource;
@@ -130,7 +132,7 @@ namespace System_ATP_creator
             this.Controls.Add(lblVersion);
 
             Label lblLastUpdate = new Label();
-            lblLastUpdate.Text = "Last Update: 23.03.2026";
+            lblLastUpdate.Text = "Last Update: 21.04.2026";
             lblLastUpdate.Font = new Font("Segoe UI", 8F, FontStyle.Regular);
             lblLastUpdate.ForeColor = Color.Black;
             lblLastUpdate.BackColor = Color.FromArgb(245, 247, 250);
@@ -256,7 +258,7 @@ namespace System_ATP_creator
             cmbSystemType.SelectedIndexChanged += CmbSystemType_SelectedIndexChanged;
             gbSystemType.Controls.Add(cmbSystemType);
 
-            Label lblVariant = new Label();
+            lblVariant = new Label();
             lblVariant.Text = "Variant:";
             lblVariant.Location = new Point(150, 28);
             lblVariant.Size = new Size(50, 22);
@@ -275,7 +277,7 @@ namespace System_ATP_creator
             cmbVariant.SelectedIndexChanged += CmbVariant_SelectedIndexChanged;
             gbSystemType.Controls.Add(cmbVariant);
 
-            Label lblFOV = new Label();
+            lblFOV = new Label();
             lblFOV.Text = "Aperture:";
             lblFOV.Location = new Point(300, 28);
             lblFOV.Size = new Size(60, 22);
@@ -930,6 +932,21 @@ namespace System_ATP_creator
 
             if (selectedType == "METS")
             {
+                // Reset labels and positions to default
+                lblVariant.Text = "Variant:";
+                lblVariant.Size = new Size(50, 22);
+                cmbVariant.Location = new Point(200, 26);
+                cmbVariant.Size = new Size(90, 24);
+                lblFOV.Text = "Aperture:";
+                lblFOV.Size = new Size(60, 22);
+                lblFOV.Location = new Point(300, 28);
+                cmbFOV.Location = new Point(365, 26);
+                cmbFOV.Size = new Size(100, 24);
+                cmbFOV.DropDownWidth = 100;
+
+                // For non-WFOV: label should be in front of dropdown
+                lblFOV.BringToFront();
+
                 cmbVariant.Items.AddRange(new object[] { "VS", "S", "L", "VL" });
                 cmbVariant.Enabled = true;
                 cmbFOV.Items.AddRange(new object[] { "10\"", "12\"", "14\"", "16\"", "19\"", "21\"" });
@@ -937,6 +954,21 @@ namespace System_ATP_creator
             }
             else if (selectedType == "ILET")
             {
+                // Reset labels and positions to default
+                lblVariant.Text = "Variant:";
+                lblVariant.Size = new Size(50, 22);
+                cmbVariant.Location = new Point(200, 26);
+                cmbVariant.Size = new Size(90, 24);
+                lblFOV.Text = "Aperture:";
+                lblFOV.Size = new Size(60, 22);
+                lblFOV.Location = new Point(300, 28);
+                cmbFOV.Location = new Point(365, 26);
+                cmbFOV.Size = new Size(100, 24);
+                cmbFOV.DropDownWidth = 100;
+
+                // For non-WFOV: label should be in front of dropdown
+                lblFOV.BringToFront();
+
                 cmbVariant.Items.AddRange(new object[] { "4", "5", "6" });
                 cmbVariant.Enabled = true;
                 // FOV for ILET depends on variant - will be set in CmbVariant_SelectedIndexChanged
@@ -944,14 +976,44 @@ namespace System_ATP_creator
             }
             else if (selectedType == "WFOV")
             {
-                // Updated: 3-5 [um] and 8-12 [um] only (removed 7-11 [um])
-                cmbVariant.Items.AddRange(new object[] { "3-5 [um]", "8-12 [um]" });
+                // Change labels for WFOV and adjust positions
+                lblVariant.Text = "Spectral Range:";
+                lblVariant.Size = new Size(90, 22); // Wider to accommodate "Spectral Range"
+                cmbVariant.Location = new Point(245, 26); // Move dropdown to the right
+                cmbVariant.Size = new Size(95, 24); // Slightly wider for longer text
+                lblFOV.Text = "FOV:"; // No trailing spaces
+                lblFOV.Size = new Size(35, 22); // Adjust width to fit "FOV:" exactly
+                lblFOV.Location = new Point(350, 28); // FOV label position
+                cmbFOV.Location = new Point(390, 26); // Position FOV dropdown closer to label
+                cmbFOV.Size = new Size(90, 24); // Set proper width for FOV values
+                cmbFOV.DropDownWidth = 90; // Ensure dropdown list matches control width
+
+                // Ensure dropdown is in front by bringing it to front
+                cmbFOV.BringToFront();
+
+                // Add three spectral range options
+                cmbVariant.Items.AddRange(new object[] { "0.9-1.7 [um]", "3-5 [um]", "8-12 [um]" });
                 cmbVariant.Enabled = true;
-                // FOV for WFOV depends on variant - will be set in CmbVariant_SelectedIndexChanged
+                // FOV for WFOV depends on spectral range - will be set in CmbVariant_SelectedIndexChanged
                 cmbFOV.Enabled = false;
             }
             else if (selectedType == "CFT")
             {
+                // Reset labels and positions to default
+                lblVariant.Text = "Variant:";
+                lblVariant.Size = new Size(50, 22);
+                cmbVariant.Location = new Point(200, 26);
+                cmbVariant.Size = new Size(90, 24);
+                lblFOV.Text = "Aperture:";
+                lblFOV.Size = new Size(60, 22);
+                lblFOV.Location = new Point(300, 28);
+                cmbFOV.Location = new Point(365, 26);
+                cmbFOV.Size = new Size(100, 24);
+                cmbFOV.DropDownWidth = 100;
+
+                // For non-WFOV: label should be in front of dropdown
+                lblFOV.BringToFront();
+
                 // CFT has IR-2, IR-5, VIS-3 variants
                 cmbVariant.Items.AddRange(new object[] { "IR-2", "IR-5", "VIS-3" });
                 cmbVariant.Enabled = true;
@@ -960,6 +1022,21 @@ namespace System_ATP_creator
             }
             else
             {
+                // Reset labels and positions to default
+                lblVariant.Text = "Variant:";
+                lblVariant.Size = new Size(50, 22);
+                cmbVariant.Location = new Point(200, 26);
+                cmbVariant.Size = new Size(90, 24);
+                lblFOV.Text = "Aperture:";
+                lblFOV.Size = new Size(60, 22);
+                lblFOV.Location = new Point(300, 28);
+                cmbFOV.Location = new Point(365, 26);
+                cmbFOV.Size = new Size(100, 24);
+                cmbFOV.DropDownWidth = 100;
+
+                // For non-WFOV: label should be in front of dropdown
+                lblFOV.BringToFront();
+
                 cmbVariant.Enabled = false;
                 cmbFOV.Enabled = false;
             }
@@ -1004,19 +1081,26 @@ namespace System_ATP_creator
             }
             else if (selectedType == "WFOV" && !string.IsNullOrEmpty(selectedVariant))
             {
-                // Set Aperture based on WFOV variant
-                if (selectedVariant == "3-5 [um]")
+                // Set FOV based on WFOV Spectral Range
+                if (selectedVariant == "0.9-1.7 [um]")
                 {
-                    // Two options: 11.0 [deg] and 15.0 [deg]
-                    cmbFOV.Items.AddRange(new object[] { "11.0 [deg]", "15.0 [deg]" });
+                    // Only one option: 11.7 [deg]
+                    cmbFOV.Items.Add("11.7 [deg]");
+                    cmbFOV.SelectedIndex = 0; // Auto-select
+                    cmbFOV.Enabled = false; // Locked, cannot change (grey/disabled)
+                }
+                else if (selectedVariant == "3-5 [um]")
+                {
+                    // Two options: 11 [deg] and 15 [deg]
+                    cmbFOV.Items.AddRange(new object[] { "11 [deg]", "15 [deg]" });
                     cmbFOV.Enabled = true; // User can choose
                 }
                 else if (selectedVariant == "8-12 [um]")
                 {
-                    // Only one option: 15.0 [deg]
-                    cmbFOV.Items.Add("15.0 [deg]");
+                    // Only one option: 11 [deg]
+                    cmbFOV.Items.Add("11 [deg]");
                     cmbFOV.SelectedIndex = 0; // Auto-select
-                    cmbFOV.Enabled = false; // Locked, cannot change
+                    cmbFOV.Enabled = false; // Locked, cannot change (grey/disabled)
                 }
             }
             else if (selectedType == "CFT" && !string.IsNullOrEmpty(selectedVariant))
