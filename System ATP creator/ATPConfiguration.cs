@@ -15,12 +15,14 @@ namespace System_ATP_creator
         public bool HasRackmount { get; set; }
         public bool HasGimbal { get; set; }
         public string GimbalSize { get; set; } = "";
+        public bool HasJoystick { get; set; }
         public bool HasLOSAlignmentTarget { get; set; }
         public bool HasTargetWheel { get; set; }
         public bool HasCTE { get; set; }
         public bool HasDeviceCenter { get; set; }
         public bool HasNewPortStage { get; set; }
         public string NewPortStageMaxWeight { get; set; } = "";
+        public bool HasNewPortJoystick { get; set; }
         public bool HasFocusStage { get; set; }
         public bool HasVRS { get; set; }
         public string TargetWheelPDFPath { get; set; } = "";

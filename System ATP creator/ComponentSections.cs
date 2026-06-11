@@ -372,8 +372,13 @@ Write Pass/Fail in the ATR document."
         }
 
         // Gimbal Section
-        public static ComponentSection Gimbal(string size)
+        public static ComponentSection Gimbal(string size, bool hasJoystick = false)
         {
+            string joystickLines = hasJoystick ? @"
+Verify proper connectivity between the joystick and the NewPort controller.
+Confirm that the joystick provides full  control of the motors.
+Ensure the stages can be driven to their full range of motion in all directions using the joystick." : "";
+
             return new ComponentSection
             {
                 TableOfContentsEntry = $"{size}\" wide Gimbal",
@@ -381,7 +386,7 @@ Write Pass/Fail in the ATR document."
                 TestProcedureSection = $@"{size}"" wide Gimbal
 Test Procedure:
 Verify that the ATP for the Gimbal, is complete according to the Manufacturing Testing and Calibration form.
-Record the test results in the ATR document."
+Record the test results in the ATR document.{joystickLines}"
             };
         }
 
@@ -451,8 +456,13 @@ Record the result in the ATR."
         }
 
         // NewPort Stage Section
-        public static ComponentSection NewPortStage(string maxWeight)
+        public static ComponentSection NewPortStage(string maxWeight, bool hasJoystick = false)
         {
+            string joystickLines = hasJoystick ? @"
+Verify proper connectivity between the joystick and the NewPort controller.
+Confirm that the joystick provides full  control of the motors.
+Ensure the stages can be driven to their full range of motion in all directions using the joystick." : "";
+
             return new ComponentSection
             {
                 TableOfContentsEntry = $"METS UUT<{maxWeight}Kg Stage",
@@ -462,7 +472,7 @@ Test Procedure:
 Perform a visual check of the UUT Stage & Controller.
 Attach manufacturer COC.
 Perform functionality test.
-Record the test results in the ATR document."
+Record the test results in the ATR document.{joystickLines}"
             };
         }
     }

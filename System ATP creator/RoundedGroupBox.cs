@@ -102,18 +102,60 @@ namespace System_ATP_creator
 
             // Top-left corner
             path.AddArc(rect.X, rect.Y, diameter, diameter, 180, 90);
-            
+
             // Top-right corner
             path.AddArc(rect.Right - diameter, rect.Y, diameter, diameter, 270, 90);
-            
+
             // Bottom-right corner
             path.AddArc(rect.Right - diameter, rect.Bottom - diameter, diameter, diameter, 0, 90);
-            
+
             // Bottom-left corner
             path.AddArc(rect.X, rect.Bottom - diameter, diameter, diameter, 90, 90);
-            
+
             path.CloseFigure();
             return path;
+        }
+    }
+
+    /// <summary>
+    /// A CheckBox that always renders its text using ForeColor, even when disabled.
+    /// This prevents Windows from overriding the text color with its blue/grey system disabled color.
+    /// The checkbox square itself is still greyed out when Enabled = false (unclickable).
+    /// </summary>
+    public class GreyableCheckBox : CheckBox
+    {
+        public GreyableCheckBox()
+        {
+            SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            e.Graphics.Clear(Parent?.BackColor ?? SystemColors.Control);
+
+            // Draw the standard checkbox square using the system renderer (respects Enabled state)
+            int boxSize = 13;
+            int boxY = (Height - boxSize) / 2;
+            Rectangle boxRect = new Rectangle(0, boxY, boxSize, boxSize);
+
+            System.Windows.Forms.VisualStyles.CheckBoxState state;
+            if (!Enabled)
+                state = System.Windows.Forms.VisualStyles.CheckBoxState.UncheckedDisabled;
+            else if (Checked)
+                state = System.Windows.Forms.VisualStyles.CheckBoxState.CheckedNormal;
+            else
+                state = System.Windows.Forms.VisualStyles.CheckBoxState.UncheckedNormal;
+
+            System.Windows.Forms.CheckBoxRenderer.DrawCheckBox(e.Graphics, new Point(boxRect.X, boxRect.Y), state);
+
+            // Draw text manually using our ForeColor (ignores Enabled state)
+            int textX = boxSize + 4;
+            Rectangle textRect = new Rectangle(textX, 0, Width - textX, Height);
+            using (SolidBrush brush = new SolidBrush(ForeColor))
+            {
+                StringFormat sf = new StringFormat { LineAlignment = StringAlignment.Center };
+                e.Graphics.DrawString(Text, Font, brush, textRect, sf);
+            }
         }
     }
 }

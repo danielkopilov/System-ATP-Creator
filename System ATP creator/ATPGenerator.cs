@@ -434,7 +434,7 @@ namespace System_ATP_creator
             // NewPort Stage
             if (config.HasNewPortStage)
             {
-                string bulletText = "NewPort Stage";
+                string bulletText = config.HasNewPortJoystick ? "NewPort Stage + Joystick." : "NewPort Stage";
                 Paragraph bulletPara = CreateBulletParagraph(bulletText, templateBulletPara);
 
                 if (insertAfter?.Parent != null)
@@ -540,7 +540,7 @@ namespace System_ATP_creator
             // Gimbal
             if (config.HasGimbal)
             {
-                string bulletText = "Gimbal.";
+                string bulletText = config.HasJoystick ? "Gimbal + Joystick." : "Gimbal.";
                 Paragraph bulletPara = CreateBulletParagraph(bulletText, templateBulletPara);
                 
                 if (insertAfter?.Parent != null)
@@ -1145,7 +1145,7 @@ namespace System_ATP_creator
                 sections.Add(ComponentSections.Rackmount());
 
             if (config.HasGimbal && !string.IsNullOrEmpty(config.GimbalSize))
-                sections.Add(ComponentSections.Gimbal(config.GimbalSize));
+                sections.Add(ComponentSections.Gimbal(config.GimbalSize, config.HasJoystick));
 
             if (config.HasLOSAlignmentTarget)
                 sections.Add(ComponentSections.LOSAlignmentTarget());
@@ -1162,7 +1162,7 @@ namespace System_ATP_creator
             }
 
             if (config.HasNewPortStage && !string.IsNullOrEmpty(config.NewPortStageMaxWeight))
-                sections.Add(ComponentSections.NewPortStage(config.NewPortStageMaxWeight));
+                sections.Add(ComponentSections.NewPortStage(config.NewPortStageMaxWeight, config.HasNewPortJoystick));
 
             System.Diagnostics.Debug.WriteLine($"Total sections collected: {sections.Count}");
             foreach (var section in sections)
