@@ -14,15 +14,15 @@ namespace System_ATP_creator
         public bool HasSourceStage { get; set; }
         public bool HasRackmount { get; set; }
         public bool HasGimbal { get; set; }
+        public bool HasGimbalJoystick { get; set; }
         public string GimbalSize { get; set; } = "";
-        public bool HasJoystick { get; set; }
         public bool HasLOSAlignmentTarget { get; set; }
         public bool HasTargetWheel { get; set; }
         public bool HasCTE { get; set; }
         public bool HasDeviceCenter { get; set; }
         public bool HasNewPortStage { get; set; }
+        public bool HasNewPortStageJoystick { get; set; }
         public string NewPortStageMaxWeight { get; set; } = "";
-        public bool HasNewPortJoystick { get; set; }
         public bool HasFocusStage { get; set; }
         public bool HasVRS { get; set; }
         public string TargetWheelPDFPath { get; set; } = "";
@@ -44,8 +44,8 @@ namespace System_ATP_creator
         public bool HasPowerMeter { get; set; }
         public bool HasEnergyMeter { get; set; }
         public bool HasManualChoke { get; set; }
-        public string BBType { get; set; } = ""; // RR or STD or SR200N-33
-        public string BBSize { get; set; } = ""; // 1D/2D/4D/8D/12D
+        public string BBType { get; set; } = ""; // RR / STD / ET / LT / WTR / HE / HT / HT-HA / CH-STD / CH-ET / CH-LT / CH-WTR / SR200N-33
+        public string BBSize { get; set; } = ""; // 1D/2D/3D/4D/5D/6D/8D/10D/12D/14D/16D/20D/35D/40D
         public string ISExitAperture { get; set; } = ""; // 2"/3"/4"/5"
         public string LOSLaserWavelength { get; set; } = ""; // User input in nm
         public string SavePath { get; set; } = ""; // Custom save location for generated ATP

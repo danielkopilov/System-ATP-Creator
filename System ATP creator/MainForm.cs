@@ -28,12 +28,12 @@ namespace System_ATP_creator
         private CheckBox cbSourceStage;
         private CheckBox cbRackmount;
         private CheckBox cbGimbal;
-        private GreyableCheckBox cbJoystick;
+        private CheckBox cbGimbalJoystick;
         private CheckBox cbLOSAlignmentTarget;
         private CheckBox cbCTE;
         private CheckBox cbDeviceCenter;
         private CheckBox cbNewPortStage;
-        private GreyableCheckBox cbNewPortJoystick;
+        private CheckBox cbNewPortStageJoystick;
         private CheckBox cbFocusStage;
         private CheckBox cbVRS;
         private CheckBox cbBB;
@@ -124,7 +124,7 @@ namespace System_ATP_creator
 
             // Add Version Information in upper right corner
             Label lblVersion = new Label();
-            lblVersion.Text = "Version: 1.0";
+            lblVersion.Text = "Version: 1.1";
             lblVersion.Font = new Font("Segoe UI", 8F, FontStyle.Regular);
             lblVersion.ForeColor = Color.Black;
             lblVersion.BackColor = Color.FromArgb(245, 247, 250);
@@ -134,7 +134,7 @@ namespace System_ATP_creator
             this.Controls.Add(lblVersion);
 
             Label lblLastUpdate = new Label();
-            lblLastUpdate.Text = "Last Update: 21.04.2026";
+            lblLastUpdate.Text = "Last Update: 18.06.2026";
             lblLastUpdate.Font = new Font("Segoe UI", 8F, FontStyle.Regular);
             lblLastUpdate.ForeColor = Color.Black;
             lblLastUpdate.BackColor = Color.FromArgb(245, 247, 250);
@@ -340,7 +340,7 @@ namespace System_ATP_creator
             cmbBBType.Font = new Font("Segoe UI", 9F);
             cmbBBType.BackColor = Color.White;
             cmbBBType.ForeColor = Color.FromArgb(31, 41, 55);
-            cmbBBType.Items.AddRange(new object[] { "RR", "STD", "SR200N-33" });
+            cmbBBType.Items.AddRange(new object[] { "RR", "STD", "ET", "LT", "WTR", "HE", "HT", "HT-HA", "CH-STD", "CH-ET", "CH-LT", "CH-WTR", "SR200N-33" });
             cmbBBType.Enabled = false;
             cmbBBType.SelectedIndexChanged += CmbBBType_SelectedIndexChanged;
             gbRadiationSource.Controls.Add(cmbBBType);
@@ -361,7 +361,7 @@ namespace System_ATP_creator
             cmbBBSize.Font = new Font("Segoe UI", 9F);
             cmbBBSize.BackColor = Color.White;
             cmbBBSize.ForeColor = Color.FromArgb(31, 41, 55);
-            cmbBBSize.Items.AddRange(new object[] { "1D", "2D", "4D", "8D", "12D" });
+            cmbBBSize.Items.AddRange(new object[] { "1D", "2D", "3D", "4D", "5D", "6D", "8D", "10D", "12D", "14D", "16D", "20D", "35D", "40D" });
             cmbBBSize.Enabled = false;
             gbRadiationSource.Controls.Add(cmbBBSize);
 
@@ -570,16 +570,14 @@ namespace System_ATP_creator
             lblMaxWeightUnit.Enabled = false;
             gbComponents.Controls.Add(lblMaxWeightUnit);
 
-            // NewPort Joystick sub-checkbox (after [KG])
-            cbNewPortJoystick = new GreyableCheckBox();
-            cbNewPortJoystick.Text = "+Joystick";
-            cbNewPortJoystick.Location = new Point(325, 107);
-            cbNewPortJoystick.Size = new Size(85, 20);
-            cbNewPortJoystick.Font = new Font("Segoe UI", 8.5F);
-            cbNewPortJoystick.ForeColor = Color.FromArgb(160, 160, 160);
-            cbNewPortJoystick.Enabled = false;
-            cbNewPortJoystick.CheckedChanged += CbNewPortJoystick_CheckedChanged;
-            gbComponents.Controls.Add(cbNewPortJoystick);
+            cbNewPortStageJoystick = new CheckBox();
+            cbNewPortStageJoystick.Text = "+Joystick";
+            cbNewPortStageJoystick.Location = new Point(325, 108);
+            cbNewPortStageJoystick.Size = new Size(90, 22);
+            cbNewPortStageJoystick.Font = new Font("Segoe UI", 9.5F);
+            cbNewPortStageJoystick.ForeColor = Color.FromArgb(55, 65, 81);
+            cbNewPortStageJoystick.Enabled = false;
+            gbComponents.Controls.Add(cbNewPortStageJoystick);
 
             // Focus Stage - Row 5 (moved from row 3)
             cbFocusStage = new CheckBox();
@@ -716,7 +714,7 @@ namespace System_ATP_creator
             gbComponents.Controls.Add(lblGimbalSize);
 
             txtGimbalSize = new TextBox();
-            txtGimbalSize.Location = new Point(133, 184);
+            txtGimbalSize.Location = new Point(135, 184);
             txtGimbalSize.Size = new Size(30, 24);
             txtGimbalSize.Font = new Font("Segoe UI", 9F);
             txtGimbalSize.BackColor = Color.White;
@@ -726,23 +724,21 @@ namespace System_ATP_creator
 
             Label lblGimbalUnit = new Label();
             lblGimbalUnit.Text = "[Inches]";
-            lblGimbalUnit.Location = new Point(166, 188);
+            lblGimbalUnit.Location = new Point(168, 188);
             lblGimbalUnit.Size = new Size(50, 20);
             lblGimbalUnit.Font = new Font("Segoe UI", 8F);
             lblGimbalUnit.ForeColor = Color.FromArgb(75, 85, 99);
             lblGimbalUnit.Enabled = false;
-
-            // Joystick sub-checkbox (after Size/[Inches])
-            cbJoystick = new GreyableCheckBox();
-            cbJoystick.Text = "+Joystick";
-            cbJoystick.Location = new Point(220, 187);
-            cbJoystick.Size = new Size(85, 20);
-            cbJoystick.Font = new Font("Segoe UI", 8.5F);
-            cbJoystick.ForeColor = Color.FromArgb(160, 160, 160);
-            cbJoystick.Enabled = false;
-            cbJoystick.CheckedChanged += CbJoystick_CheckedChanged;
-            gbComponents.Controls.Add(cbJoystick);
             gbComponents.Controls.Add(lblGimbalUnit);
+
+            cbGimbalJoystick = new CheckBox();
+            cbGimbalJoystick.Text = "+Joystick";
+            cbGimbalJoystick.Location = new Point(225, 186);
+            cbGimbalJoystick.Size = new Size(90, 22);
+            cbGimbalJoystick.Font = new Font("Segoe UI", 9.5F);
+            cbGimbalJoystick.ForeColor = Color.FromArgb(55, 65, 81);
+            cbGimbalJoystick.Enabled = false;
+            gbComponents.Controls.Add(cbGimbalJoystick);
 
             gbComponents.Controls.Add(cbSourceStage);
             gbComponents.Controls.Add(cbRackmount);
@@ -1310,54 +1306,38 @@ namespace System_ATP_creator
 
         private void CbGimbal_CheckedChanged(object? sender, EventArgs e)
         {
+            // Enable Gimbal size textbox when Gimbal is checked
             var lblGimbalSize = gbComponents.Controls.OfType<Label>().FirstOrDefault(l => l.Text == "Size:");
             var lblGimbalUnit = gbComponents.Controls.OfType<Label>().FirstOrDefault(l => l.Text == "[Inches]");
-
+            
             if (lblGimbalSize != null) lblGimbalSize.Enabled = cbGimbal.Checked;
             if (lblGimbalUnit != null) lblGimbalUnit.Enabled = cbGimbal.Checked;
             txtGimbalSize.Enabled = cbGimbal.Checked;
-
-            cbJoystick.Checked = false;
-            cbJoystick.Enabled = cbGimbal.Checked;
-            cbJoystick.ForeColor = cbGimbal.Checked
-                ? Color.Black
-                : Color.FromArgb(160, 160, 160);
+            cbGimbalJoystick.Enabled = cbGimbal.Checked;
 
             if (!cbGimbal.Checked)
+            {
                 txtGimbalSize.Text = "";
-        }
-
-        private void CbJoystick_CheckedChanged(object? sender, EventArgs e)
-        {
-            cbJoystick.ForeColor = cbJoystick.Checked
-                ? Color.Black
-                : Color.FromArgb(160, 160, 160);
+                cbGimbalJoystick.Checked = false;
+            }
         }
 
         private void CbNewPortStage_CheckedChanged(object? sender, EventArgs e)
         {
+            // Enable NewPort Stage max weight textbox when NewPort Stage is checked
             var lblMaxWeight = gbComponents.Controls.OfType<Label>().FirstOrDefault(l => l.Text == "Max Weight:");
             var lblMaxWeightUnit = gbComponents.Controls.OfType<Label>().FirstOrDefault(l => l.Text == "[KG]");
-
+            
             if (lblMaxWeight != null) lblMaxWeight.Enabled = cbNewPortStage.Checked;
             if (lblMaxWeightUnit != null) lblMaxWeightUnit.Enabled = cbNewPortStage.Checked;
             txtNewPortStageMaxWeight.Enabled = cbNewPortStage.Checked;
-
-            cbNewPortJoystick.Checked = false;
-            cbNewPortJoystick.Enabled = cbNewPortStage.Checked;
-            cbNewPortJoystick.ForeColor = cbNewPortStage.Checked
-                ? Color.Black
-                : Color.FromArgb(160, 160, 160);
+            cbNewPortStageJoystick.Enabled = cbNewPortStage.Checked;
 
             if (!cbNewPortStage.Checked)
+            {
                 txtNewPortStageMaxWeight.Text = "";
-        }
-
-        private void CbNewPortJoystick_CheckedChanged(object? sender, EventArgs e)
-        {
-            cbNewPortJoystick.ForeColor = cbNewPortJoystick.Checked
-                ? Color.Black
-                : Color.FromArgb(160, 160, 160);
+                cbNewPortStageJoystick.Checked = false;
+            }
         }
 
         private void CbBacklight_CheckedChanged(object? sender, EventArgs e)
@@ -1528,15 +1508,15 @@ namespace System_ATP_creator
                 HasSourceStage = cbSourceStage.Checked,
                 HasRackmount = cbRackmount.Checked,
                 HasGimbal = cbGimbal.Checked,
+                HasGimbalJoystick = cbGimbalJoystick.Checked,
                 GimbalSize = txtGimbalSize.Text.Trim(),
-                HasJoystick = cbJoystick.Checked,
                 HasLOSAlignmentTarget = cbLOSAlignmentTarget.Checked,
                 HasTargetWheel = true, // Always included
                 HasCTE = cbCTE.Checked,
                 HasDeviceCenter = cbDeviceCenter.Checked,
                 HasNewPortStage = cbNewPortStage.Checked,
+                HasNewPortStageJoystick = cbNewPortStageJoystick.Checked,
                 NewPortStageMaxWeight = txtNewPortStageMaxWeight.Text.Trim(),
-                HasNewPortJoystick = cbNewPortJoystick.Checked,
                 HasFocusStage = cbFocusStage.Checked,
                 HasVRS = cbVRS.Checked,
                 HasXYStage = cbXYStage.Checked,

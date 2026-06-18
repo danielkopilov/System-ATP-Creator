@@ -22,35 +22,33 @@ Record the test results in the ATR document."
             };
         }
 
+        // Builds the blackbody model designation used consistently across all generated ATP text.
+        // SR200N-33 is a fixed product name (size not embedded); all other types follow SR800N-{size}-{type}.
+        public static string BuildBlackbodyModelName(string type, string size)
+        {
+            if (type.Equals("SR200N-33", System.StringComparison.OrdinalIgnoreCase))
+                return "SR200N-33";
+
+            return $"SR800N-{size}-{type}";
+        }
+
         // Blackbody (B.B) Section
         public static ComponentSection Blackbody(string type, string size)
         {
-            // Different procedure for SR200N-33 vs RR/STD
-            if (type.Equals("SR200N-33", StringComparison.OrdinalIgnoreCase))
+            // All blackbody types (including SR200N-33) share the same ATP text;
+            // only the model designation changes between types.
+            string model = BuildBlackbodyModelName(type, size);
+
+            return new ComponentSection
             {
-                return new ComponentSection
-                {
-                    TableOfContentsEntry = "SR200N-33 Blackbody",
-                    ListOfTestsEntry = "IR Source: SR-200N-33",
-                    TestProcedureSection = @"SR200N-33 Blackbody
-Test Procedure:
-Verify that the ATR for the SR-200N-33 is completed according to the procedure described in doc. # TP7241000010 & TP7241000020."
-                };
-            }
-            else
-            {
-                // For RR or STD types
-                return new ComponentSection
-                {
-                    TableOfContentsEntry = $"IR Source: SR800N-{size}-{type} Blackbody + Controller",
-                    ListOfTestsEntry = "IR Source: SR-800N",
-                    TestProcedureSection = $@"SR800N-{size} black body
+                TableOfContentsEntry = $"IR Source: {model} Blackbody + Controller",
+                ListOfTestsEntry = $"IR Source: {model}",
+                TestProcedureSection = $@"{model} Blackbody
 Test Procedure: 
-Verify that the ATP for the SR-800N-{size} is completed according to the procedure          described in doc. #TA7041000010. 
+Verify that the ATP for the {model} is completed according to the procedure          described in doc. #TA7041000010. 
 Test Radiometric offset according to procedure D1506034250.
 Record the test results in the ATR document."
-                };
-            }
+            };
         }
 
         // Source Stage Section
@@ -374,7 +372,8 @@ Write Pass/Fail in the ATR document."
         // Gimbal Section
         public static ComponentSection Gimbal(string size, bool hasJoystick = false)
         {
-            string joystickLines = hasJoystick ? @"
+            string joystickSteps = hasJoystick ? @"
+Verify that Joystick SW is installed on the controller
 Verify proper connectivity between the joystick and the NewPort controller.
 Confirm that the joystick provides full  control of the motors.
 Ensure the stages can be driven to their full range of motion in all directions using the joystick." : "";
@@ -386,7 +385,7 @@ Ensure the stages can be driven to their full range of motion in all directions 
                 TestProcedureSection = $@"{size}"" wide Gimbal
 Test Procedure:
 Verify that the ATP for the Gimbal, is complete according to the Manufacturing Testing and Calibration form.
-Record the test results in the ATR document.{joystickLines}"
+Record the test results in the ATR document.{joystickSteps}"
             };
         }
 
@@ -458,7 +457,8 @@ Record the result in the ATR."
         // NewPort Stage Section
         public static ComponentSection NewPortStage(string maxWeight, bool hasJoystick = false)
         {
-            string joystickLines = hasJoystick ? @"
+            string joystickSteps = hasJoystick ? @"
+Verify that Joystick SW is installed on the controller
 Verify proper connectivity between the joystick and the NewPort controller.
 Confirm that the joystick provides full  control of the motors.
 Ensure the stages can be driven to their full range of motion in all directions using the joystick." : "";
@@ -472,7 +472,7 @@ Test Procedure:
 Perform a visual check of the UUT Stage & Controller.
 Attach manufacturer COC.
 Perform functionality test.
-Record the test results in the ATR document.{joystickLines}"
+Record the test results in the ATR document.{joystickSteps}"
             };
         }
     }

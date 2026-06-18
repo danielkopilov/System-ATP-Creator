@@ -357,20 +357,11 @@ namespace System_ATP_creator
             // B.B (Blackbody)
             if (config.HasBB && !string.IsNullOrEmpty(config.BBSize) && !string.IsNullOrEmpty(config.BBType))
             {
-                string bulletText;
-                // Special formatting for SR200N-33 type
-                if (config.BBType.Equals("SR200N-33", StringComparison.OrdinalIgnoreCase))
-                {
-                    bulletText = "IR Source: SR200N-33 Blackbody + Controller.";
-                }
-                else
-                {
-                    // For RR or STD types
-                    bulletText = $"IR Source: SR800N-{config.BBSize}-{config.BBType} Blackbody + Controller.";
-                }
-                
+                string model = ComponentSections.BuildBlackbodyModelName(config.BBType, config.BBSize);
+                string bulletText = $"IR Source: {model} Blackbody + Controller.";
+
                 Paragraph bulletPara = CreateBulletParagraph(bulletText, templateBulletPara);
-                
+
                 if (insertAfter?.Parent != null)
                 {
                     insertAfter.Parent.InsertAfter(bulletPara, insertAfter);
@@ -434,7 +425,7 @@ namespace System_ATP_creator
             // NewPort Stage
             if (config.HasNewPortStage)
             {
-                string bulletText = config.HasNewPortJoystick ? "NewPort Stage + Joystick." : "NewPort Stage";
+                string bulletText = "NewPort Stage";
                 Paragraph bulletPara = CreateBulletParagraph(bulletText, templateBulletPara);
 
                 if (insertAfter?.Parent != null)
@@ -540,7 +531,7 @@ namespace System_ATP_creator
             // Gimbal
             if (config.HasGimbal)
             {
-                string bulletText = config.HasJoystick ? "Gimbal + Joystick." : "Gimbal.";
+                string bulletText = "Gimbal.";
                 Paragraph bulletPara = CreateBulletParagraph(bulletText, templateBulletPara);
                 
                 if (insertAfter?.Parent != null)
@@ -1145,7 +1136,7 @@ namespace System_ATP_creator
                 sections.Add(ComponentSections.Rackmount());
 
             if (config.HasGimbal && !string.IsNullOrEmpty(config.GimbalSize))
-                sections.Add(ComponentSections.Gimbal(config.GimbalSize, config.HasJoystick));
+                sections.Add(ComponentSections.Gimbal(config.GimbalSize, config.HasGimbalJoystick));
 
             if (config.HasLOSAlignmentTarget)
                 sections.Add(ComponentSections.LOSAlignmentTarget());
@@ -1162,7 +1153,7 @@ namespace System_ATP_creator
             }
 
             if (config.HasNewPortStage && !string.IsNullOrEmpty(config.NewPortStageMaxWeight))
-                sections.Add(ComponentSections.NewPortStage(config.NewPortStageMaxWeight, config.HasNewPortJoystick));
+                sections.Add(ComponentSections.NewPortStage(config.NewPortStageMaxWeight, config.HasNewPortStageJoystick));
 
             System.Diagnostics.Debug.WriteLine($"Total sections collected: {sections.Count}");
             foreach (var section in sections)
@@ -2288,9 +2279,10 @@ namespace System_ATP_creator
                 OpenXmlElement insertAfter = lastComponentPara;
 
                 // Add B.B if selected
-                if (config.HasBB && !string.IsNullOrEmpty(config.BBSize))
+                if (config.HasBB && !string.IsNullOrEmpty(config.BBSize) && !string.IsNullOrEmpty(config.BBType))
                 {
-                    Paragraph bbPara = CreateBulletParagraph($"IR Source: SR800N-{config.BBSize}-RR Blackbody + Controller.", existingBulletStyle);
+                    string model = ComponentSections.BuildBlackbodyModelName(config.BBType, config.BBSize);
+                    Paragraph bbPara = CreateBulletParagraph($"IR Source: {model} Blackbody + Controller.", existingBulletStyle);
                     lastComponentPara.Parent.InsertAfter(bbPara, insertAfter);
                     insertAfter = bbPara;
                 }
