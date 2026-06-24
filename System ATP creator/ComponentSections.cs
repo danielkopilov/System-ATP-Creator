@@ -98,6 +98,8 @@ Record the test results in the ATR document."
             }
 
             procedureLines.AppendLine("Make sure that during the travel, there are no impacts and that the travel is smooth. Make sure no cables are tangled due to the focus stage travel.");
+            procedureLines.AppendLine("Verify that the focus stage travel limits are correctly defined in the .SR8 file by commanding movement beyond the specified finite focal distance limit. Confirm that the movement is blocked and that an appropriate error message is displayed.");
+            procedureLines.AppendLine("Verify OPB motor homing from each required finite focal distance position by moving the focus stage to each position, turning the controller power OFF and then ON again. Confirm that the focus stage performs homing successfully after power is restored on every finite distance.");
             procedureLines.AppendLine("Repeat the previous two steps three times.");
             procedureLines.Append("Write Pass/Fail in the ATR document.");
 
