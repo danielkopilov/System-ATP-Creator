@@ -126,7 +126,7 @@ namespace System_ATP_creator
 
             // Add Version Information in upper right corner
             Label lblVersion = new Label();
-            lblVersion.Text = "Version: 1.2";
+            lblVersion.Text = "Version: 1.3";
             lblVersion.Font = new Font("Segoe UI", 8F, FontStyle.Regular);
             lblVersion.ForeColor = Color.Black;
             lblVersion.BackColor = Color.FromArgb(245, 247, 250);
@@ -136,7 +136,7 @@ namespace System_ATP_creator
             this.Controls.Add(lblVersion);
 
             Label lblLastUpdate = new Label();
-            lblLastUpdate.Text = "Last Update: 24.06.2026";
+            lblLastUpdate.Text = "Last Update: 25.06.2026";
             lblLastUpdate.Font = new Font("Segoe UI", 8F, FontStyle.Regular);
             lblLastUpdate.ForeColor = Color.Black;
             lblLastUpdate.BackColor = Color.FromArgb(245, 247, 250);
