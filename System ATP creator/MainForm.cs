@@ -16,8 +16,10 @@ namespace System_ATP_creator
         private ComboBox cmbSystemType;
         private ComboBox cmbVariant;
         private ComboBox cmbFOV;
+        private ComboBox cmbEFL;
         private Label lblVariant;
         private Label lblFOV;
+        private Label lblEFL;
         private RoundedGroupBox gbSystemType;
         private RoundedGroupBox gbComponents;
         private RoundedGroupBox gbRadiationSource;
@@ -296,6 +298,27 @@ namespace System_ATP_creator
             cmbFOV.ForeColor = Color.FromArgb(31, 41, 55);
             cmbFOV.Enabled = false;
             gbSystemType.Controls.Add(cmbFOV);
+
+            // EFL dropdown - only shown for ILET Variant 5 (to the right of Aperture)
+            lblEFL = new Label();
+            lblEFL.Text = "EFL:";
+            lblEFL.Location = new Point(470, 28);
+            lblEFL.Size = new Size(35, 22);
+            lblEFL.Font = new Font("Segoe UI", 9F);
+            lblEFL.ForeColor = Color.FromArgb(55, 65, 81);
+            lblEFL.Visible = false;
+            gbSystemType.Controls.Add(lblEFL);
+
+            cmbEFL = new ComboBox();
+            cmbEFL.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbEFL.Location = new Point(505, 26);
+            cmbEFL.Size = new Size(80, 24);
+            cmbEFL.Font = new Font("Segoe UI", 9F);
+            cmbEFL.BackColor = Color.White;
+            cmbEFL.ForeColor = Color.FromArgb(31, 41, 55);
+            cmbEFL.Items.AddRange(new object[] { "15\"", "30\"" });
+            cmbEFL.Visible = false;
+            gbSystemType.Controls.Add(cmbEFL);
 
             this.Controls.Add(gbSystemType);
 
@@ -1060,6 +1083,8 @@ namespace System_ATP_creator
                 cmbVariant.Enabled = false;
                 cmbFOV.Enabled = false;
             }
+
+            UpdateEFLVisibility();
         }
 
         private void CmbVariant_SelectedIndexChanged(object? sender, EventArgs e)
@@ -1144,6 +1169,31 @@ namespace System_ATP_creator
                     cmbFOV.SelectedIndex = 0; // Auto-select
                     cmbFOV.Enabled = false; // Locked, cannot change
                 }
+            }
+
+            UpdateEFLVisibility();
+        }
+
+        private void UpdateEFLVisibility()
+        {
+            string selectedType = cmbSystemType.SelectedItem?.ToString() ?? "";
+            string selectedVariant = cmbVariant.SelectedItem?.ToString() ?? "";
+
+            // EFL dropdown is only relevant for ILET Variant 5
+            bool showEFL = selectedType == "ILET" && selectedVariant == "5";
+
+            lblEFL.Visible = showEFL;
+            cmbEFL.Visible = showEFL;
+
+            if (showEFL)
+            {
+                // Default to 30" (762 mm) to preserve the previous Variant 5 behavior
+                if (cmbEFL.SelectedIndex < 0)
+                    cmbEFL.SelectedItem = "30\"";
+            }
+            else
+            {
+                cmbEFL.SelectedIndex = -1;
             }
         }
 
@@ -1505,6 +1555,7 @@ namespace System_ATP_creator
                 SystemType = cmbSystemType.SelectedItem?.ToString() ?? "",
                 METSVariant = cmbVariant.SelectedItem?.ToString() ?? "",
                 FOV = cmbFOV.SelectedItem?.ToString()?.Replace("\"", "") ?? "",
+                EFL = cmbEFL.SelectedIndex >= 0 ? cmbEFL.SelectedItem.ToString() : "",
                 HasSourceStage = cbSourceStage.Checked,
                 HasRackmount = cbRackmount.Checked,
                 HasGimbal = cbGimbal.Checked,

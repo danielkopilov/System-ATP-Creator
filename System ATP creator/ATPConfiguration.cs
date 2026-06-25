@@ -11,6 +11,7 @@ namespace System_ATP_creator
         public string SystemType { get; set; } = "";
         public string METSVariant { get; set; } = "";
         public string FOV { get; set; } = "";
+        public string EFL { get; set; } = ""; // ILET Variant 5 only: 15" or 30" (Effective Focal Length)
         public bool HasSourceStage { get; set; }
         public bool HasRackmount { get; set; }
         public bool HasGimbal { get; set; }
@@ -53,7 +54,7 @@ namespace System_ATP_creator
         /// <summary>
         /// Gets the variant distance value based on system type and variant.
         /// For METS: VS=1023.3, S=1787.1, L=1787.1, VL=3048
-        /// For ILET: 4=762, 5=762, 6=1016
+        /// For ILET: 4=762, 5=EFL based (15"=381, 30"=762), 6=1016
         /// </summary>
         public string GetVariantDistance()
         {
@@ -70,6 +71,18 @@ namespace System_ATP_creator
             }
             else if (SystemType.Equals("ILET", StringComparison.OrdinalIgnoreCase))
             {
+                // For ILET, the variant determines the distance.
+                // Variant 5 lets the user choose the EFL (15" or 30"); insert the value in mm.
+                if (METSVariant == "5" && !string.IsNullOrEmpty(EFL))
+                {
+                    return EFL.Replace("\"", "").Trim() switch
+                    {
+                        "15" => "381",   // 15" x 25.4 mm/inch = 381 mm
+                        "30" => "762",   // 30" x 25.4 mm/inch = 762 mm
+                        _ => "762"
+                    };
+                }
+
                 // For ILET, the variant determines the distance
                 return METSVariant switch
                 {

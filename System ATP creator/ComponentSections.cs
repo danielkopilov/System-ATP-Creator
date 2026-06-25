@@ -68,7 +68,7 @@ Record the test results in the ATR document."
         }
 
         // Focus Stage Section
-        public static ComponentSection FocusStage(string finiteDistance, string finiteDistance2, string finiteDistance3, string systemType, string variant)
+        public static ComponentSection FocusStage(string finiteDistance, string finiteDistance2, string finiteDistance3, string systemType, string variant, string efl = "")
         {
             // Build test procedure with multiple finite distances
             var procedureLines = new System.Text.StringBuilder();
@@ -78,21 +78,21 @@ Record the test results in the ATR document."
             // Add line for each non-empty finite distance
             if (!string.IsNullOrWhiteSpace(finiteDistance))
             {
-                double distanceFromFocalPlane = CalculateDistanceFromFocalPlane(systemType, variant, finiteDistance);
+                double distanceFromFocalPlane = CalculateDistanceFromFocalPlane(systemType, variant, finiteDistance, efl);
                 string distanceText = distanceFromFocalPlane.ToString("0.00");
                 procedureLines.AppendLine($"Verify the focus stage travel allows movement of +{distanceText}±5% mm from Infinity position, reaching {finiteDistance}m finite focal distance.");
             }
 
             if (!string.IsNullOrWhiteSpace(finiteDistance2))
             {
-                double distanceFromFocalPlane2 = CalculateDistanceFromFocalPlane(systemType, variant, finiteDistance2);
+                double distanceFromFocalPlane2 = CalculateDistanceFromFocalPlane(systemType, variant, finiteDistance2, efl);
                 string distanceText2 = distanceFromFocalPlane2.ToString("0.00");
                 procedureLines.AppendLine($"Verify the focus stage travel allows movement of +{distanceText2}±5% mm from Infinity position, reaching {finiteDistance2}m finite focal distance.");
             }
 
             if (!string.IsNullOrWhiteSpace(finiteDistance3))
             {
-                double distanceFromFocalPlane3 = CalculateDistanceFromFocalPlane(systemType, variant, finiteDistance3);
+                double distanceFromFocalPlane3 = CalculateDistanceFromFocalPlane(systemType, variant, finiteDistance3, efl);
                 string distanceText3 = distanceFromFocalPlane3.ToString("0.00");
                 procedureLines.AppendLine($"Verify the focus stage travel allows movement of +{distanceText3}±5% mm from Infinity position, reaching {finiteDistance3}m finite focal distance.");
             }
@@ -116,7 +116,7 @@ Record the test results in the ATR document."
         /// Based on Finite Distance Calc.xml
         /// Formula: Distance from focal plane = (EFL²) / (DesiredFiniteDistance - EFL)
         /// </summary>
-        private static double CalculateDistanceFromFocalPlane(string systemType, string variant, string finiteDistanceMeters)
+        private static double CalculateDistanceFromFocalPlane(string systemType, string variant, string finiteDistanceMeters, string efl = "")
         {
             // Parse finite distance (in meters)
             if (!double.TryParse(finiteDistanceMeters, out double finiteDistanceM))
@@ -125,7 +125,7 @@ Record the test results in the ATR document."
             }
 
             // Get EFL in mm based on system type and variant
-            double eflMm = GetEFL(systemType, variant);
+            double eflMm = GetEFL(systemType, variant, efl);
 
             if (eflMm == 0)
             {
@@ -145,7 +145,7 @@ Record the test results in the ATR document."
         /// Returns the Effective Focal Length (EFL) in mm based on system type and variant
         /// Values are from Finite Distance Calc.xml
         /// </summary>
-        private static double GetEFL(string systemType, string variant)
+        private static double GetEFL(string systemType, string variant, string efl = "")
         {
             if (string.IsNullOrEmpty(systemType))
                 return 0;
@@ -166,6 +166,17 @@ Record the test results in the ATR document."
             }
             else if (systemType == "ILET")
             {
+                // For variant 5 the user can choose the EFL (15" or 30"); use the selected value in mm
+                if (variant == "5" && !string.IsNullOrEmpty(efl))
+                {
+                    return efl.Replace("\"", "").Trim() switch
+                    {
+                        "15" => 15 * 25.4,   // 381 mm
+                        "30" => 30 * 25.4,   // 762 mm
+                        _ => 30 * 25.4
+                    };
+                }
+
                 return variant switch
                 {
                     "4" => 30 * 25.4,   // 30" ª mm per inch = 762 mm

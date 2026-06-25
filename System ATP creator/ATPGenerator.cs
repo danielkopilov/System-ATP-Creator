@@ -1087,7 +1087,8 @@ namespace System_ATP_creator
                     config.FocusStageFiniteDistance2, 
                     config.FocusStageFiniteDistance3, 
                     config.SystemType, 
-                    config.METSVariant));
+                    config.METSVariant,
+                    config.EFL));
 
             if (config.HasBB && !string.IsNullOrEmpty(config.BBType) && !string.IsNullOrEmpty(config.BBSize))
             {
